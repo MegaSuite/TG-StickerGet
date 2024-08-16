@@ -1,0 +1,15 @@
+services:
+  stickerget:
+    restart: always
+    container_name: stickerget
+    image: megasuite/tg_sticker_get:0.2
+    volumes:
+      - ./config/config.yaml:/app/config.yaml
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
