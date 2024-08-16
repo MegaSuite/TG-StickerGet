@@ -1,19 +1,10 @@
 # StickerDownloader
 <p>
-   <a href="https://github.com/rroy233/StickerDownloader">
-      <img alt="GitHub go.mod Go version" src="https://img.shields.io/github/go-mod/go-version/rroy233/StickerDownloader?style=flat-square">
+   <a href="https://github.com/MegaSuite/TG-StickerGet/blob/main/LICENSE">
+      <img alt="GitHub license" src="https://img.shields.io/github/license/megasuite/TG-StickerGet">
    </a>
-   <a href="https://github.com/rroy233/StickerDownloader/releases">
-      <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/rroy233/StickerDownloader?style=flat-square">
-   </a>
-   <a href="https://github.com/rroy233/StickerDownloader/blob/main/LICENSE">
-      <img alt="GitHub license" src="https://img.shields.io/github/license/rroy233/StickerDownloader?style=flat-square">
-   </a>
-   <a href="https://github.com/rroy233/StickerDownloader/commits/main">
-      <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/rroy233/StickerDownloader?style=flat-square">
-   </a>
-    <a href="https://t.me/stickers_download_bot">
-      <img alt="GitHub last commit" src="https://img.shields.io/badge/demo-%40stickers__download__bot-green?style=flat-square">
+   <a href="https://github.com/MegaSuite/TG-StickerGet/commits/main/">
+      <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/megasuite/TG-StickerGet">
    </a>
 </p>
 
