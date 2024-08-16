@@ -1,0 +1,30 @@
+general:
+  bot_token: "xxx"
+  language: "zh-hans"
+  worker_num: 2
+  download_worker_num: 3
+  admin_uid: 0
+  user_daily_limit: 10
+  process_wait_queue_max_size: 50
+  process_timeout: 60
+  support_tgs_file: false
+  max_amount_per_req: 100
+
+cache:
+  enabled: false
+  storage_dir: "./storage/cache"
+  max_disk_usage: 1024
+  cache_expire: 86400
+  cache_clean_interval: 1800
+
+logger:
+  report: false
+  report_url: ""
+  report_query_key: ""
+
+redis:
+  server: "localhost"
+  port: "6379"
+  tls: false
+  password: ""
+  db: 0

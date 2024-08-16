@@ -23,7 +23,7 @@ logger:
   report_query_key: "" # 远程日志上报query参数
 
 redis:
-  server: "172.17.0.1" # redis服务器地址，使用docker-compose部署，所以填写docker网卡地址
+  server: "redis" # redis服务器地址，使用docker-compose部署，使用容器名称内部通信
   port: "6379" # redis服务器端口
   tls: false # redis是否启用tls
   password: "" # redis密码

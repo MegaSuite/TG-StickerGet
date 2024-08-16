@@ -19,9 +19,9 @@
 
 > 一个可以帮你下载表情包的telegram机器人
 
-中文 | [EN](README_en.md)
+本项目基于[rroy233/StickerDownloader](https://github.com/rroy233/StickerDownloader)进行适于docker运行的改进。
 
-### 功能
+## 功能
 
 * 发送表情、表情链接给bot，bot为您转换为便于保存的gif文件.
 * 支持将Telegram官方出品的表情(tgs)格式转换为gif.
@@ -31,38 +31,37 @@
 
 ![cover](docs/demo.gif)
 
-### 运行要求
+## 使用方法
 
-- Redis
-- ffmpeg
-- [lottie2gif](https://github.com/rroy233/lottie2gif) (可选)
+### 编写docker-compose.yaml
 
-### 使用方法
+```bash
+mkdir stickerget
+cd stickerget
+vim docker-compose.yaml
+```
 
-#### 下载
+内容如下：
 
-1. 克隆仓库
 
-   ```shell
-   git clone https://github.com/rroy233/StickerDownloader.git
-   ```
+```yaml
+services:
+  stickerget:
+    restart: always
+    container_name: stickerget
+    image: megasuite/tg_sticker_get:0.2
+    volumes:
+      - ./config/config.yaml:/app/config.yaml
+    depends_on:
+      - redis
 
-2. 获取可执行文件
+  redis:
+  	restart: always
+    image: redis:alpine
+    container_name: redis
+```
 
-    1. 自行编译
-
-       ```shell
-       cd StickerDownloader/
-       # 自行编译
-       # go版本要求：go1.19+
-       go build
-       ```
-       
-    2. 前往release下载
-
-       下载已编译的[可执行文件](https://github.com/rroy233/StickerDownloader/releases)，重新命名为`StickerDownloader`，放于项目文件夹内
-
-#### 找 BotFather 创建Bot
+### 创建Telegram Bot
 
 获得`bot_token`,然后设置命令列表
 
@@ -72,21 +71,26 @@ getlimit - 获取当日使用限额
 admin - 查看管理员指令
 ```
 
-#### 配置
+### 编写config.yaml
 
-复制`config.example.yaml`为`config.yaml`
+```bash
+mkdir config
+vim config/config.yaml
+```
+
+内容如下：
 
 ```yaml
 general:
-  bot_token: "xxx" # 从BotFather获得
+  bot_token: "nnnnnnn:xxxxxxxxxxxxxxxxxxxx" # 从BotFather获得
   language: "zh-hans" # 默认语言(对应/languages文件夹中的文件名)
   worker_num: 2 # 消息处理的线程数
   download_worker_num: 3 # 下载、文件转码工作线程数
-  admin_uid: 0 # 管理员UID
-  user_daily_limit: 10 # 每日使用次数限制
+  admin_uid: 66666666 # 管理员telegram ID，从@getUserID_Robot获取
+  user_daily_limit: 100 # 每日使用次数限制
   process_wait_queue_max_size: 50 # 等待队列最大长度
   process_timeout: 60 # 处理超时时间(s)
-  support_tgs_file: false # 是否开启tgs表情支持
+  support_tgs_file: true # 是否开启tgs表情支持
   max_amount_per_req: 100 # 下载整套表情包时允许的最大数量
 
 cache:
@@ -102,39 +106,30 @@ logger:
   report_query_key: "" # 远程日志上报query参数
 
 redis:
-  server: "localhost" # redis服务器地址
+  server: "redis" # redis服务器地址，使用docker-compose部署，使用容器名称内部通信
   port: "6379" # redis服务器端口
   tls: false # redis是否启用tls
   password: "" # redis密码
   db: 0 # redis数据库编号
 ```
 
+### 运行
 
-#### 下载ffmpeg
+```
+docker compose up -d
+```
 
-若已安装ffmpeg可跳过该步骤。
-
-下载对应平台的[ffmpeg](https://ffmpeg.org/)的可执行文件，命名格式为`ffmpeg`或`ffmpeg.exe`，复制到`./ffmpeg`文件夹。
-
-#### lottie2gif集成
-
-若需要支持tgs格式表情转换，需要为StickerDownloader集成[lottie2gif](https://github.com/rroy233/lottie2gif).
-
-并更改配置文件：
+### 目录结构
 
 ```yaml
-  support_tgs_file: true
+stickerget
+	-- docker-compose.yaml
+	-- config
+		-- config.yaml
 ```
 
-#### 后台运行脚本
 
-```shell
-# 编译并运行
-bash ./buildrun.sh 
-
-# 直接运行
-bash ./run.sh 
-```
 
 ### LICENSE
-GPL-3.0 license
+
+`GPL-3.0 license`
