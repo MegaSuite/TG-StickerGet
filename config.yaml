@@ -1,9 +1,9 @@
 general:
-  bot_token: "" # 从BotFather获得
+  bot_token: "nnnnnnn:xxxxxxxxxxxxxxxxxxxx" # 从BotFather获得
   language: "zh-hans" # 默认语言(对应/languages文件夹中的文件名)
   worker_num: 2 # 消息处理的线程数
   download_worker_num: 3 # 下载、文件转码工作线程数
-  admin_uid: xxxxx # 管理员telegram ID，从@getUserID_Robot获取
+  admin_uid: 66666666 # 管理员telegram ID，从@getUserID_Robot获取
   user_daily_limit: 100 # 每日使用次数限制
   process_wait_queue_max_size: 50 # 等待队列最大长度
   process_timeout: 60 # 处理超时时间(s)

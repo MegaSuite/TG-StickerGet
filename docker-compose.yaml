@@ -9,5 +9,6 @@ services:
       - redis
 
   redis:
+  	restart: always
     image: redis:alpine
     container_name: redis
